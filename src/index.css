@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animation pour le défilement des cartes partenaires - Carrousel fluide */
+@keyframes scroll-partners {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partners-scroll {
+  animation: scroll-partners 50s linear infinite;
+} 
