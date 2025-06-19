@@ -351,7 +351,7 @@ const App = () => {
 
               <div className="flex justify-center lg:justify-end">
                 <img 
-                  src="public\images\DSCF1015.JPG" 
+                  src="/images/DSCF1015.JPG" 
                   alt="Chambre d'hôtel élégante avec décoration moderne"
                   className="rounded-lg shadow-2xl w-full h-auto max-h-[600px] object-cover"
                 />
