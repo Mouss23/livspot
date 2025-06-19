@@ -1,8 +1,88 @@
 import React, { useState, useEffect } from 'react';
 
+// Composant FloatingModalButton
+const FloatingModalButton = ({ formIsOpen = false }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
+
+  if (formIsOpen) {
+    return null; // Masquer le bouton si le formulaire est ouvert
+  }
+
+  return (
+    <>
+      {/* Bouton flottant */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <button
+          onClick={openModal}
+          className="bg-suite-orange text-white px-4 py-3 md:px-6 md:py-4 rounded-lg font-oswald uppercase tracking-wider text-sm md:text-base font-bold shadow-lg hover:bg-black hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-suite-orange/50"
+          aria-label="Découvrir la plateforme LIVSPOT"
+        >
+          Découvrir la plateforme BtoB
+        </button>
+      </div>
+
+      {/* Modale */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          onClick={handleOverlayClick}
+        >
+          <div
+            className="bg-white rounded-lg shadow-2xl max-w-[600px] w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-6 md:p-8">
+              {/* Titre */}
+              <h2 className="font-oswald text-2xl md:text-3xl font-bold text-suite-orange uppercase tracking-wide mb-6 text-center">
+                DÉCOUVRIR LA PLATEFORME
+              </h2>
+
+              {/* Texte explicatif */}
+              <p className="font-space-grotesk text-base md:text-lg text-suite-black leading-relaxed mb-8 text-center">
+                LIVSPOT vous permet d'exposer vos créations dans des lieux uniques. Découvrez l'univers de la plateforme dédiée aux marques.
+              </p>
+
+              {/* Boutons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                {/* Bouton principal */}
+                <a
+                  href="https://pro.thesuiteescapes.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-suite-orange text-white px-6 py-3 rounded-lg font-oswald uppercase tracking-wider font-bold hover:bg-black transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-suite-orange/50 shadow-lg text-center"
+                >
+                  Accéder à la plateforme
+                </a>
+
+                {/* Bouton secondaire */}
+                <button
+                  onClick={closeModal}
+                  className="font-space-grotesk text-suite-black hover:text-suite-orange transition-colors duration-300 px-6 py-3 font-medium"
+                >
+                  Fermer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState(null);
+  const [formIsOpen, setFormIsOpen] = useState(false);
 
   // Gestion du scroll lors de l'ouverture/fermeture de la lightbox
   useEffect(() => {
@@ -188,7 +268,7 @@ const App = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 md:bg-fixed"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
+            backgroundImage: "url('/images/APOTICARI27.JPG')"
           }}
         ></div>
         
@@ -197,12 +277,13 @@ const App = () => {
           <div className="text-center lg:text-left">
             {/* Main Title */}
             <h1 className="font-oswald text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-suite-black mb-8 leading-tight max-w-5xl uppercase tracking-wide">
-              SUBLIMEZ L'EXPÉRIENCE, MARQUEZ LES ESPRITS.
+            PLACEZ VOS PRODUITS,
+            LÀ OÙ VOS CLIENTS VIVENT !
             </h1>
             
             {/* Subtitle */}
             <h2 className="font-space-grotesk text-xl sm:text-2xl lg:text-3xl text-suite-black/90 mb-12 leading-extra-relaxed max-w-4xl lg:max-w-3xl font-normal">
-              Un placement de produit élégant, naturel et mesurable au cœur des hébergements touristiques.
+              LIVSPOT, la plateforme qui connecte les plus belles marques aux plus beaux lieux de vie.
             </h2>
             
             {/* CTA Buttons */}
@@ -215,7 +296,7 @@ const App = () => {
                 data-tally-width="600"
                 data-tally-overlay="1"
               >
-                Vous êtes un hébergement
+                Vous êtes un lieu
               </button>
               
               <button 
@@ -238,14 +319,14 @@ const App = () => {
       </section>
 
       {/* Main Content */}
-      <main className="bg-suite-beige">
+      <main className="bg-white">
         {/* Section 1: Pour les adresses */}
         <section className="py-24" id="adresses">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-8">
                 <p className="font-oswald text-base uppercase tracking-widest text-[#9a06c6] mb-4">
-                  Pour les hébergeurs
+                  Pour les lieux
                 </p>
                 <h2 className="font-oswald text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight uppercase tracking-wide">
                   <span className="text-suite-orange">CHAMBRES, MAISON D'HÔTES, CONCIERGERIES ?</span><br />
@@ -270,24 +351,165 @@ const App = () => {
 
               <div className="flex justify-center lg:justify-end">
                 <img 
-                  src="/images/photo_adresse.jpg" 
+                  src="public\images\DSCF1015.JPG" 
                   alt="Chambre d'hôtel élégante avec décoration moderne"
-                  className="rounded-lg shadow-2xl max-w-full h-auto w-full lg:w-[90%]"
+                  className="rounded-lg shadow-2xl w-full h-auto max-h-[600px] object-cover"
                 />
               </div>
             </div>
           </div>
         </section>
 
+        {/* Section Pourquoi rejoindre LIVSPOT */}
+        <section className="py-24 bg-suite-beige" id="pourquoi">
+          <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-oswald text-3xl sm:text-4xl font-bold text-suite-black mb-16 text-center uppercase tracking-wide">
+              POURQUOI REJOINDRE LIVSPOT ?
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+              {/* Carte 1 */}
+              <div className="relative rounded-lg shadow-lg p-6 md:p-8 bg-white hover:shadow-2xl hover:-translate-y-1 transform transition duration-300">
+                <div className="flex flex-col items-center text-center">
+                  <svg className="w-8 h-8 text-suite-orange mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                  </svg>
+                  <h3 className="font-oswald text-suite-black text-lg sm:text-xl font-bold uppercase text-center mb-4">
+                    DES MARQUES BELLES & UTILES À TARIFS PRÉFÉRENTIELS
+                  </h3>
+                  <p className="font-space-grotesk text-center text-[#333] text-base">
+                    Accédez aux plus belles marques du marché avec des conditions préférentielles négociées pour vous.
+                  </p>
+                </div>
+              </div>
+
+              {/* Carte 2 */}
+              <div className="relative rounded-lg shadow-lg p-6 md:p-8 bg-white hover:shadow-2xl hover:-translate-y-1 transform transition duration-300">
+                <div className="flex flex-col items-center text-center">
+                  <svg className="w-8 h-8 text-suite-orange mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                  </svg>
+                  <h3 className="font-oswald text-suite-black text-lg sm:text-xl font-bold uppercase text-center mb-4">
+                    DES COLLABORATIONS VALORISANTES POUR VOTRE IMAGE
+                  </h3>
+                  <p className="font-space-grotesk text-center text-[#333] text-base">
+                    Renforcez votre positionnement premium en vous associant aux marques les plus désirables.
+                  </p>
+                </div>
+              </div>
+
+              {/* Carte 3 */}
+              <div className="relative rounded-lg shadow-lg p-6 md:p-8 bg-white hover:shadow-2xl hover:-translate-y-1 transform transition duration-300">
+                <div className="flex flex-col items-center text-center">
+                  <svg className="w-8 h-8 text-suite-orange mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <h3 className="font-oswald text-suite-black text-lg sm:text-xl font-bold uppercase text-center mb-4">
+                    UNE MISE EN PLACE RAPIDE DE VOS CAMPAGNES
+                  </h3>
+                  <p className="font-space-grotesk text-center text-[#333] text-base">
+                    Interface intuitive et équipe dédiée pour un déploiement rapide de vos placements produits.
+                  </p>
+                </div>
+              </div>
+
+              {/* Carte 4 */}
+              <div className="relative rounded-lg shadow-lg p-6 md:p-8 bg-white hover:shadow-2xl hover:-translate-y-1 transform transition duration-300">
+                <div className="flex flex-col items-center text-center">
+                  <svg className="w-8 h-8 text-suite-orange mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <h3 className="font-oswald text-suite-black text-lg sm:text-xl font-bold uppercase text-center mb-4">
+                    UNE ÉQUIPE DÉDIÉE POUR VOUS ACCOMPAGNER
+                  </h3>
+                  <p className="font-space-grotesk text-center text-suite-black text-base">
+                    Bénéficiez d'un accompagnement personnalisé tout au long de vos collaborations.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section Comment ça marche */}
+        <section className="py-24 bg-white" id="comment-ca-marche">
+          <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="font-oswald text-3xl sm:text-4xl font-bold text-suite-black mb-6 text-center uppercase tracking-wide">
+                COMMENT ÇA MARCHE ?
+              </h2>
+              <p className="font-space-grotesk text-xl text-suite-black/70 max-w-4xl mx-auto">
+                Trois étapes simples pour enrichir l'expérience de vos voyageurs et trouver les meilleurs partenaires
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+              {/* Carte 1 */}
+              <div className="relative rounded-lg shadow-lg p-6 md:p-8 bg-suite-beige hover:shadow-2xl hover:-translate-y-1 transform transition duration-300">
+                <div className="absolute top-4 right-4 bg-suite-orange text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
+                  1
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <svg className="w-8 h-8 text-suite-orange mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                  </svg>
+                  <h3 className="font-oswald text-suite-black text-lg sm:text-xl font-bold uppercase text-center mb-4">
+                    REJOIGNEZ LIVSPOT
+                  </h3>
+                  <p className="font-space-grotesk text-center text-suite-black text-base">
+                    Créez votre compte gratuitement et accédez à notre sélection de marques partenaires.
+                  </p>
+                </div>
+              </div>
+
+              {/* Carte 2 */}
+              <div className="relative rounded-lg shadow-lg p-6 md:p-8 bg-suite-beige hover:shadow-2xl hover:-translate-y-1 transform transition duration-300">
+                <div className="absolute top-4 right-4 bg-suite-orange text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
+                  2
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <svg className="w-8 h-8 text-suite-orange mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                  </svg>
+                  <h3 className="font-oswald text-suite-black text-lg sm:text-xl font-bold uppercase text-center mb-4">
+                    PROFITEZ D'AVANTAGES EXCLUSIFS
+                  </h3>
+                  <p className="font-space-grotesk text-center text-suite-black text-base">
+                    Accédez aux plus jolies marques à prix préférentiels. Faites la différence auprès de vos clients en vous équipant avec des produits beaux et fonctionnels.
+                  </p>
+                </div>
+              </div>
+
+              {/* Carte 3 */}
+              <div className="relative rounded-lg shadow-lg p-6 md:p-8 bg-suite-beige hover:shadow-2xl hover:-translate-y-1 transform transition duration-300">
+                <div className="absolute top-4 right-4 bg-suite-orange text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">
+                  3
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <svg className="w-8 h-8 text-suite-orange mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                  </svg>
+                  <h3 className="font-oswald text-suite-black text-lg sm:text-xl font-bold uppercase text-center mb-4">
+                    BOOSTEZ VOTRE VISIBILITÉ
+                  </h3>
+                  <p className="font-space-grotesk text-center text-suite-black text-base">
+                    Collaborez avec nos marques partenaires en candidatant à des campagnes de placement de produit.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Section 2: Pour les marques */}
-        <section className="py-24 bg-white" id="marques">
+        <section className="py-24 bg-suite-beige" id="marques">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="flex justify-center lg:justify-start">
                 <img 
-                  src="/images/photo_marque.jpg" 
+                  src="/images/MoulinMoulinXDomaineJolibois_14.jpg" 
                   alt="Produits de luxe et objets design pour marques premium"
-                  className="rounded-lg shadow-2xl max-w-full h-auto w-full lg:w-[90%]"
+                  className="rounded-lg shadow-2xl w-full h-auto max-h-[600px] object-cover"
                 />
               </div>
 
@@ -296,8 +518,8 @@ const App = () => {
                   Pour les marques
                 </p>
                 <h2 className="font-oswald text-3xl sm:text-4xl lg:text-5xl font-bold text-suite-black mb-4 leading-tight uppercase tracking-wide">
-                  <span className="text-suite-orange">MARQUES & ARTISTES,</span><br />
-                  <span className="text-suite-black">EXPOSER VOS CRÉATIONS AVEC LIVSPOT</span>
+                  <span className="text-suite-orange">MARQUES,</span><br />
+                  <span className="text-suite-black">EXPOSEZ VOS CRÉATIONS AVEC LIVSPOT</span>
                 </h2>
                 
                 <p className="text-lg md:text-xl font-space-grotesk text-suite-black leading-extra-relaxed mb-10">
@@ -316,62 +538,20 @@ const App = () => {
           </div>
         </section>
 
-        {/* Section Qui sommes-nous */}
-        <section className="py-24 bg-suite-beige" id="qui-sommes-nous">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Titre de la section */}
-            <h2 className="font-oswald text-4xl sm:text-5xl font-bold text-suite-black mb-16 text-center uppercase tracking-wide">
-              QUI SOMMES-NOUS ?
-            </h2>
-            
-            {/* Layout deux colonnes */}
-            <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-              {/* Texte de présentation - à gauche */}
-              <div className="flex-1 max-w-2xl space-y-4">
-                <p className="font-space-grotesk text-lg md:text-xl text-suite-black leading-relaxed text-left">
-                  <strong className="text-suite-orange">S'inspirer en voyageant…</strong><br />
-                  Dénicher la maison de vacances idéale et vivre une expérience inoubliable, c'est exactement ce qui nous anime depuis quelques années maintenant. Un art de vivre dont on ne se lasse pas et que l'on clame haut et fort !
-                </p>
-                
-                <p className="font-space-grotesk text-lg md:text-xl text-suite-black leading-relaxed text-left">
-                  Nous sommes <strong>Clémence et Aurore</strong>, 2 sœurs, passionnées de déco et de voyage – sensibles au beau et aux jolis détails qui font d'un lieu une véritable destination.
-                </p>
-                
-                <p className="font-space-grotesk text-lg md:text-xl text-suite-black leading-relaxed text-left">
-                  Nous avons toujours aimé dénicher, découvrir et partager des adresses singulières pour s'évader qui répondent à un besoin de déconnecter, de passer du bon temps en famille, entre amis ou bien simplement à deux. À travers LIVSPOT, notre volonté est d'aller plus loin en accompagnant les voyageurs dans leur quête de cette maison de vacances idéale.
-                </p>
-                
-                <p className="font-oswald text-xl md:text-2xl text-[#9a06c6] font-bold mt-8 tracking-wide text-left">
-                  Clémence & Aurore
-                </p>
-              </div>
-              
-              {/* Image des créatrices - à droite */}
-              <div className="flex-shrink-0">
-                <img 
-                  src="/images/fondatrices.jpg" 
-                  alt="Portrait des fondatrices de Livspot, Clémence et Aurore"
-                  className="rounded-lg shadow-md mx-auto md:mx-0 max-w-md w-full h-auto"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Section Preuve sociale */}
         <section className="py-24 bg-white" id="partenaires">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center">
               <h2 className="font-oswald text-4xl sm:text-5xl font-bold text-suite-black mb-4 uppercase tracking-wide">
-                PARTENAIRES
+                ILS NOUS FONT CONFIANCE
               </h2>
-              <p className="font-space-grotesk text-xl text-suite-black/70 mb-8">
-                Plus de 150 partenaires hébergements nous font confiance
+              <p className="font-space-grotesk text-xl text-suite-black/70">
+                Découvrez quelques-unes de nos marques partenaires
               </p>
             </div>
 
             {/* Carrousel de cartes partenaires fluide - Toute largeur */}
-            <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-16">
+            <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-8">
               <div className="partners-container relative overflow-hidden h-96 md:h-[28rem] flex items-center bg-white/30 backdrop-blur-sm">
                 <div className="partners-scroll flex items-center">
                   {/* Premier set de cartes */}
@@ -430,11 +610,58 @@ const App = () => {
                 </div>
               </div>
             </div>
+            <div className="text-center mb-8">
+              <p className="font-space-grotesk text-xl text-suite-black/90 mb-8 font-bold">
+              + DE 2000 LIEUX SÉLECTIONNÉS PAR NOS SOINS ET 50 MARQUES PARTENAIRES
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section Qui sommes-nous */}
+        <section className="py-24 bg-suite-beige" id="qui-sommes-nous">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Titre de la section */}
+            <h2 className="font-oswald text-4xl sm:text-5xl font-bold text-suite-black mb-16 text-center uppercase tracking-wide">
+              QUI SOMMES-NOUS ?
+            </h2>
+            
+            {/* Layout deux colonnes */}
+            <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+              {/* Texte de présentation - à gauche */}
+              <div className="flex-1 max-w-2xl space-y-4">
+                <p className="font-space-grotesk text-lg md:text-xl text-suite-black leading-relaxed text-left">
+                  <strong className="text-suite-orange">S'inspirer en voyageant…</strong><br />
+                  Dénicher la maison de vacances idéale et vivre une expérience inoubliable, c'est exactement ce qui nous anime depuis quelques années maintenant. Un art de vivre dont on ne se lasse pas et que l'on clame haut et fort !
+                </p>
+                
+                <p className="font-space-grotesk text-lg md:text-xl text-suite-black leading-relaxed text-left">
+                  Nous sommes <strong>Clémence et Aurore</strong>, 2 sœurs, passionnées de déco et de voyage – sensibles au beau et aux jolis détails qui font d'un lieu une véritable destination.
+                </p>
+                
+                <p className="font-space-grotesk text-lg md:text-xl text-suite-black leading-relaxed text-left">
+                  Nous avons toujours aimé dénicher, découvrir et partager des adresses singulières pour s'évader qui répondent à un besoin de déconnecter, de passer du bon temps en famille, entre amis ou bien simplement à deux. À travers LIVSPOT, notre volonté est d'aller plus loin en accompagnant les voyageurs dans leur quête de cette maison de vacances idéale.
+                </p>
+                
+                <p className="font-oswald text-xl md:text-2xl text-[#9a06c6] font-bold mt-8 tracking-wide text-left">
+                  Clémence & Aurore
+                </p>
+              </div>
+              
+              {/* Image des créatrices - à droite */}
+              <div className="flex-shrink-0">
+                <img 
+                  src="/images/fondatrices.jpg" 
+                  alt="Portrait des fondatrices de Livspot, Clémence et Aurore"
+                  className="rounded-lg shadow-md mx-auto md:mx-0 max-w-md w-full h-auto"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Section Galerie */}
-        <section className="py-16 bg-[#fafaf7]" id="galerie">
+        <section className="py-16 bg-white" id="galerie">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="font-oswald text-3xl sm:text-4xl font-bold text-suite-black mb-12 text-center uppercase tracking-wider">
               GALERIE
@@ -638,7 +865,7 @@ const App = () => {
         )}
 
         {/* CTA Secondaire */}
-        <section className="py-24 bg-gray-100">
+        <section className="py-24 bg-suite-beige">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-oswald text-4xl sm:text-5xl font-bold text-suite-black mb-6 uppercase tracking-wide">
               REJOIGNEZ LE RÉSEAU <span className="text-suite-orange font-bold">LIVSPOT</span>
@@ -659,26 +886,10 @@ const App = () => {
           </div>
         </section>
 
-        {/* Bandeau de promotion */}
-        <section className="bg-suite-orange py-12">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="text-lg md:text-xl font-medium text-white font-space-grotesk text-center md:text-left">
-                Accédez à une plateforme d'exception pour équiper vos lieux à prix réduits avec des marques et créateurs sélectionnés.
-              </p>
-              <a 
-                href="https://pro.thesuiteescapes.com/"
-                target="_blank"
-                className="bg-suite-purple text-white px-6 py-3 rounded-md text-sm font-semibold hover:bg-suite-purple/90 transition whitespace-nowrap"
-                aria-label="Accéder à la plateforme professionnelle"
-                tabIndex="0"
-              >
-                Découvrir la plateforme
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
+
+      {/* Bouton flottant avec modale */}
+      <FloatingModalButton formIsOpen={formIsOpen} />
 
       {/* Footer */}
       <footer className="bg-suite-purple text-white border-t border-white/20">
