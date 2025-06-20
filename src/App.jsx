@@ -26,7 +26,7 @@ const FloatingModalButton = ({ formIsOpen = false }) => {
           className="bg-suite-orange text-white px-4 py-3 md:px-6 md:py-4 rounded-lg font-oswald uppercase tracking-wider text-sm md:text-base font-bold shadow-lg hover:bg-black hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-suite-orange/50"
           aria-label="Découvrir la plateforme LIVSPOT"
         >
-          Découvrir la plateforme BtoB
+          PLATEFORME
         </button>
       </div>
 
@@ -48,7 +48,7 @@ const FloatingModalButton = ({ formIsOpen = false }) => {
 
               {/* Texte explicatif */}
               <p className="font-space-grotesk text-base md:text-lg text-suite-black leading-relaxed mb-8 text-center">
-                LIVSPOT vous permet d'exposer vos créations dans des lieux uniques. Découvrez l'univers de la plateforme dédiée aux marques.
+                Explorez un espace pensé pour sublimer l’expérience client à travers des placements de produits naturels et cohérents.
               </p>
 
               {/* Boutons */}
@@ -81,20 +81,7 @@ const FloatingModalButton = ({ formIsOpen = false }) => {
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [lightboxImage, setLightboxImage] = useState(null);
   const [formIsOpen, setFormIsOpen] = useState(false);
-
-  // Gestion du scroll lors de l'ouverture/fermeture de la lightbox
-  useEffect(() => {
-    if (lightboxImage) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [lightboxImage]);
 
   const partnerData = [
     { 
@@ -191,15 +178,6 @@ const App = () => {
                     Partenaires
                   </a>
                 </li>
-                <li>
-                  <a 
-                    href="#galerie" 
-                    className="font-oswald text-white hover:text-suite-orange hover:underline hover:underline-offset-4 transition-all duration-300 font-medium tracking-wide"
-                    tabIndex="0"
-                  >
-                    Galerie
-                  </a>
-                </li>
               </ul>
             </nav>
 
@@ -250,12 +228,6 @@ const App = () => {
                 >
                   Partenaires
                 </a>
-                <a 
-                  href="#galerie" 
-                  className="block px-3 py-2 font-oswald text-white hover:text-suite-orange hover:bg-white/10 rounded-md transition-all duration-300 font-medium tracking-wide"
-                >
-                  Galerie
-                </a>
               </div>
             </div>
           )}
@@ -276,10 +248,11 @@ const App = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div className="text-center lg:text-left">
             {/* Main Title */}
-            <h1 className="font-oswald text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-suite-black mb-8 leading-tight max-w-5xl uppercase tracking-wide">
-            PLACEZ VOS PRODUITS,
+            <h1 className="font-oswald text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-suite-black mb-8 leading-snug max-w-5xl uppercase tracking-wide">
+            PLACEZ VOS PRODUITS, <br />
             LÀ OÙ VOS CLIENTS VIVENT !
             </h1>
+
             
             {/* Subtitle */}
             <h2 className="font-space-grotesk text-xl sm:text-2xl lg:text-3xl text-suite-black/90 mb-12 leading-extra-relaxed max-w-4xl lg:max-w-3xl font-normal">
@@ -362,12 +335,12 @@ const App = () => {
 
         {/* Section Pourquoi rejoindre LIVSPOT */}
         <section className="py-24 bg-suite-beige" id="pourquoi">
-          <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-oswald text-3xl sm:text-4xl font-bold text-suite-black mb-16 text-center uppercase tracking-wide">
               POURQUOI REJOINDRE LIVSPOT ?
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-20 gap-y-12">
               {/* Carte 1 */}
               <div className="relative rounded-lg shadow-lg p-6 md:p-8 bg-white hover:shadow-2xl hover:-translate-y-1 transform transition duration-300">
                 <div className="flex flex-col items-center text-center">
@@ -394,21 +367,6 @@ const App = () => {
                   </h3>
                   <p className="font-space-grotesk text-center text-[#333] text-base">
                     Renforcez votre positionnement premium en vous associant aux marques les plus désirables.
-                  </p>
-                </div>
-              </div>
-
-              {/* Carte 3 */}
-              <div className="relative rounded-lg shadow-lg p-6 md:p-8 bg-white hover:shadow-2xl hover:-translate-y-1 transform transition duration-300">
-                <div className="flex flex-col items-center text-center">
-                  <svg className="w-8 h-8 text-suite-orange mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  <h3 className="font-oswald text-suite-black text-lg sm:text-xl font-bold uppercase text-center mb-4">
-                    UNE MISE EN PLACE RAPIDE DE VOS CAMPAGNES
-                  </h3>
-                  <p className="font-space-grotesk text-center text-[#333] text-base">
-                    Interface intuitive et équipe dédiée pour un déploiement rapide de vos placements produits.
                   </p>
                 </div>
               </div>
@@ -630,19 +588,10 @@ const App = () => {
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
               {/* Texte de présentation - à gauche */}
               <div className="flex-1 max-w-2xl space-y-4">
-                <p className="font-space-grotesk text-lg md:text-xl text-suite-black leading-relaxed text-left">
-                  <strong className="text-suite-orange">S'inspirer en voyageant…</strong><br />
-                  Dénicher la maison de vacances idéale et vivre une expérience inoubliable, c'est exactement ce qui nous anime depuis quelques années maintenant. Un art de vivre dont on ne se lasse pas et que l'on clame haut et fort !
-                </p>
-                
-                <p className="font-space-grotesk text-lg md:text-xl text-suite-black leading-relaxed text-left">
-                  Nous sommes <strong>Clémence et Aurore</strong>, 2 sœurs, passionnées de déco et de voyage – sensibles au beau et aux jolis détails qui font d'un lieu une véritable destination.
-                </p>
-                
-                <p className="font-space-grotesk text-lg md:text-xl text-suite-black leading-relaxed text-left">
-                  Nous avons toujours aimé dénicher, découvrir et partager des adresses singulières pour s'évader qui répondent à un besoin de déconnecter, de passer du bon temps en famille, entre amis ou bien simplement à deux. À travers LIVSPOT, notre volonté est d'aller plus loin en accompagnant les voyageurs dans leur quête de cette maison de vacances idéale.
-                </p>
-                
+              <strong className="font-space-grotesk text-lg md:text-xl text-suite-orange leading-relaxed text-left">Une séléction fine pour chaque collaboration marque/lieu</strong><br />
+                <p className="font-space-grotesk text-lg md:text-xl text-suite-black leading-relaxed text-left">                  
+                  Chaque placement est le fruit d'un matching intelligent basé sur des critères précis (type de lieu, saison, ambiance, clientèle) et d'une curation manuelle par notre équipe, pour garantir la cohérence et l'impact de chaque campagne.</p>
+                               
                 <p className="font-oswald text-xl md:text-2xl text-[#9a06c6] font-bold mt-8 tracking-wide text-left">
                   Clémence & Aurore
                 </p>
@@ -660,212 +609,10 @@ const App = () => {
           </div>
         </section>
 
-        {/* Section Galerie */}
-        <section className="py-16 bg-white" id="galerie">
-          <div className="max-w-7xl mx-auto px-6">
-            <h2 className="font-oswald text-3xl sm:text-4xl font-bold text-suite-black mb-12 text-center uppercase tracking-wider">
-              GALERIE
-            </h2>
 
-            <div className="relative">
-              <button 
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-suite-black p-3 rounded-full shadow-lg transition-all duration-300 -ml-4 md:ml-0"
-                aria-label="Image précédente"
-                onClick={() => {
-                  const container = document.getElementById('gallery-container');
-                  const itemWidth = container.querySelector('.carousel-item').offsetWidth;
-                  container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
-                }}
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              <button 
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-suite-black p-3 rounded-full shadow-lg transition-all duration-300 -mr-4 md:mr-0"
-                aria-label="Image suivante"
-                onClick={() => {
-                  const container = document.getElementById('gallery-container');
-                  const itemWidth = container.querySelector('.carousel-item').offsetWidth;
-                  container.scrollBy({ left: itemWidth, behavior: 'smooth' });
-                }}
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-
-              <div 
-                id="gallery-container"
-                className="flex overflow-x-auto scroll-smooth scrollbar-hide gap-4 pb-4 pr-4"
-                style={{ 
-                  scrollbarWidth: 'none', 
-                  msOverflowStyle: 'none',
-                  scrollSnapType: 'x mandatory'
-                }}
-              >
-                <div className="carousel-item flex-shrink-0 w-72 md:w-80 lg:w-96" style={{ scrollSnapAlign: 'start' }}>
-                  <div 
-                    className="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] cursor-pointer" 
-                    onClick={() => setLightboxImage("/images/photo_selectionnee/480883947_18043878176359094_914653580530041364_n.jpg")}
-                  >
-                    <img 
-                      src="/images/photo_selectionnee/480883947_18043878176359094_914653580530041364_n.jpg"
-                      alt="Suite de luxe" 
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-                      loading="lazy" 
-                    />
-                  </div>
-                </div>
-                <div className="carousel-item flex-shrink-0 w-72 md:w-80 lg:w-96" style={{ scrollSnapAlign: 'start' }}>
-                  <div 
-                    className="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] cursor-pointer" 
-                    onClick={() => setLightboxImage("/images/photo_selectionnee/Photo_galerie2.jpg")}
-                  >
-                    <img 
-                      src="/images/photo_selectionnee/Photo_galerie2.jpg"
-                      alt="Chambre d'hôtel" 
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-                      loading="lazy" 
-                    />
-                  </div>
-                </div>
-                <div className="carousel-item flex-shrink-0 w-72 md:w-80 lg:w-96" style={{ scrollSnapAlign: 'start' }}>
-                  <div 
-                    className="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] cursor-pointer" 
-                    onClick={() => setLightboxImage("/images/photo_selectionnee/Photo_galerie3.webp")}
-                  >
-                    <img 
-                      src="/images/photo_selectionnee/Photo_galerie3.webp"
-                      alt="Espace détente" 
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-                      loading="lazy" 
-                    />
-                  </div>
-                </div>
-                <div className="carousel-item flex-shrink-0 w-72 md:w-80 lg:w-96" style={{ scrollSnapAlign: 'start' }}>
-                  <div 
-                    className="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] cursor-pointer" 
-                    onClick={() => setLightboxImage("/images/photo_selectionnee/Photo_galerie4.jpg")}
-                  >
-                    <img 
-                      src="/images/photo_selectionnee/Photo_galerie4.jpg"
-                      alt="Restaurant" 
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-                      loading="lazy" 
-                    />
-                  </div>
-                </div>
-                <div className="carousel-item flex-shrink-0 w-72 md:w-80 lg:w-96" style={{ scrollSnapAlign: 'start' }}>
-                  <div 
-                    className="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] cursor-pointer" 
-                    onClick={() => setLightboxImage("/images/photo_selectionnee/Photo_galerie5.webp")}
-                  >
-                    <img 
-                      src="/images/photo_selectionnee/Photo_galerie5.webp"
-                      alt="Terrasse" 
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-                      loading="lazy" 
-                    />
-                  </div>
-                </div>
-                <div className="carousel-item flex-shrink-0 w-72 md:w-80 lg:w-96" style={{ scrollSnapAlign: 'start' }}>
-                  <div 
-                    className="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] cursor-pointer" 
-                    onClick={() => setLightboxImage("/images/photo_selectionnee/Photo_galerie10.jpg")}
-                  >
-                    <img 
-                      src="/images/photo_selectionnee/Photo_galerie10.jpg"
-                      alt="Spa" 
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-                      loading="lazy" 
-                    />
-                  </div>
-                </div>
-                <div className="carousel-item flex-shrink-0 w-72 md:w-80 lg:w-96" style={{ scrollSnapAlign: 'start' }}>
-                  <div 
-                    className="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] cursor-pointer" 
-                    onClick={() => setLightboxImage("/images/photo_selectionnee/Photo_galerie7.jpg")}
-                  >
-                    <img 
-                      src="/images/photo_selectionnee/Photo_galerie7.jpg"
-                      alt="Suite familiale" 
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-                      loading="lazy" 
-                    />
-                  </div>
-                </div>
-                <div className="carousel-item flex-shrink-0 w-72 md:w-80 lg:w-96" style={{ scrollSnapAlign: 'start' }}>
-                  <div 
-                    className="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] cursor-pointer" 
-                    onClick={() => setLightboxImage("/images/photo_selectionnee/Photo_galerie8.jpg")}
-                  >
-                    <img 
-                      src="/images/photo_selectionnee/Photo_galerie8.jpg"
-                      alt="Bar lounge" 
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-                      loading="lazy" 
-                    />
-                  </div>
-                </div>
-                <div className="carousel-item flex-shrink-0 w-72 md:w-80 lg:w-96" style={{ scrollSnapAlign: 'start' }}>
-                  <div 
-                    className="relative overflow-hidden rounded-lg shadow-md aspect-[4/3] cursor-pointer" 
-                    onClick={() => setLightboxImage("/images/photo_selectionnee/Photo_galerie9.jpg")}
-                  >
-                    <img 
-                      src="/images/photo_selectionnee/Photo_galerie9.jpg"
-                      alt="Jardin d'hiver" 
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-                      loading="lazy" 
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex justify-center mt-6 space-x-2">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, index) => (
-                  <button
-                    key={index}
-                    className="w-2 h-2 rounded-full bg-suite-black/20 hover:bg-suite-black/40 transition-colors duration-300"
-                    aria-label={`Aller à l'image ${index + 1}`}
-                    onClick={() => {
-                      const container = document.getElementById('gallery-container');
-                      const itemWidth = container.querySelector('.carousel-item').offsetWidth;
-                      container.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Lightbox */}
-        {lightboxImage && (
-          <div
-            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 animate-fadeIn"
-            onClick={() => setLightboxImage(null)}
-          >
-            <img
-              src={lightboxImage}
-              alt="Image de la galerie"
-              className="max-w-3xl w-full rounded-lg shadow-lg"
-              onClick={(e) => e.stopPropagation()}
-            />
-            <button
-              onClick={() => setLightboxImage(null)}
-              className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-suite-orange transition-colors duration-300"
-              aria-label="Fermer"
-            >
-              ✕
-            </button>
-          </div>
-        )}
 
         {/* CTA Secondaire */}
-        <section className="py-24 bg-suite-beige">
+        <section className="py-24 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-oswald text-4xl sm:text-5xl font-bold text-suite-black mb-6 uppercase tracking-wide">
               REJOIGNEZ LE RÉSEAU <span className="text-suite-orange font-bold">LIVSPOT</span>
