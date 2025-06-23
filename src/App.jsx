@@ -249,14 +249,13 @@ const App = () => {
           <div className="text-center lg:text-left">
             {/* Main Title */}
             <h1 className="font-oswald text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-suite-black mb-8 leading-snug max-w-5xl uppercase tracking-wide">
-            PLACEZ VOS PRODUITS, <br />
-            LÀ OÙ VOS CLIENTS VIVENT !
+            ESSAYEZ, APPRÉCIEZ, ADOPTEZ. <br />
             </h1>
 
             
             {/* Subtitle */}
             <h2 className="font-space-grotesk text-xl sm:text-2xl lg:text-3xl text-suite-black/90 mb-12 leading-extra-relaxed max-w-4xl lg:max-w-3xl font-normal">
-              LIVSPOT, la plateforme qui connecte les plus belles marques aux plus beaux lieux de vie.
+              LIVSPOT sublime vos lieux et revèle vos marques.
             </h2>
             
             {/* CTA Buttons */}
@@ -272,13 +271,16 @@ const App = () => {
                 Vous êtes un lieu
               </button>
               
-              <button 
+              <a 
+                href="https://calendly.com/contact-livspot/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center px-8 py-4 text-lg font-bold text-white bg-suite-orange rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-suite-black focus:outline-none focus:ring-4 focus:ring-suite-orange/50 shadow-xl font-oswald uppercase tracking-wider w-full sm:w-auto"
                 aria-label="Accéder à la plateforme LIVSPOT pour les marques"
                 tabIndex="0"
               >
                 Vous êtes une marque
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -477,14 +479,17 @@ const App = () => {
                 </p>
                 <h2 className="font-oswald text-3xl sm:text-4xl lg:text-5xl font-bold text-suite-black mb-4 leading-tight uppercase tracking-wide">
                   <span className="text-suite-orange">MARQUES,</span><br />
-                  <span className="text-suite-black">EXPOSEZ VOS CRÉATIONS AVEC LIVSPOT</span>
+                  <span className="text-suite-black">EXPOSEZ VOS PRODUITS AVEC LIVSPOT</span>
                 </h2>
                 
                 <p className="text-lg md:text-xl font-space-grotesk text-suite-black leading-extra-relaxed mb-10">
                   Diffusez votre marque à travers des lieux d'hospitalité d'exception, et laissez l'expérience utilisateur devenir votre meilleur ambassadeur.
                 </p>
 
-                <button 
+                <button  
+                  href="https://calendly.com/contact-livspot/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-[#9a06c6] text-white px-10 py-4 rounded-lg font-bold font-oswald uppercase tracking-wider hover:bg-black transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#9a06c6]/50 shadow-lg"
                   aria-label="Prendre rendez-vous avec LIVSPOT pour votre marque"
                   tabIndex="0"
