@@ -25,6 +25,7 @@ const FloatingModalButton = ({ formIsOpen = false }) => {
           onClick={openModal}
           className="bg-suite-orange text-white px-4 py-3 md:px-6 md:py-4 rounded-lg font-oswald uppercase tracking-wider text-sm md:text-base font-bold shadow-lg hover:bg-black hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-suite-orange/50"
           aria-label="Découvrir la plateforme LIVSPOT"
+          data-event="open_platform"
         >
           PLATEFORME
         </button>
