@@ -261,8 +261,8 @@ const App = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center lg:items-start">
               <button 
-                id="openPopupLieu"
-                className="inline-flex items-center px-8 py-4 text-lg font-bold text-white bg-suite-orange rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-suite-black focus:outline-none focus:ring-4 focus:ring-suite-orange/50 shadow-xl font-oswald uppercase tracking-wider w-full sm:w-auto"
+                data-event="open_form" 
+                className="popup-trigger inline-flex items-center px-8 py-4 text-lg font-bold text-white bg-suite-orange rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-suite-black focus:outline-none focus:ring-4 focus:ring-suite-orange/50 shadow-xl font-oswald uppercase tracking-wider w-full sm:w-auto"
                 aria-label="Accéder à la plateforme LIVSPOT pour les hébergements"
                 tabIndex="0"
                 data-tally-open="wLqLyJ"
@@ -314,7 +314,8 @@ const App = () => {
                 </p>
 
                 <button 
-                  className="bg-[#9a06c6] text-white px-10 py-4 rounded-lg font-bold font-oswald uppercase tracking-wider hover:bg-black transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#9a06c6]/50 shadow-lg"
+                  data-event="open_form"
+                  className="popup-trigger bg-[#9a06c6] text-white px-10 py-4 rounded-lg font-bold font-oswald uppercase tracking-wider hover:bg-black transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#9a06c6]/50 shadow-lg"
                   aria-label="Contacter LIVSPOT pour votre hébergement"
                   tabIndex="0"
                   data-tally-open="wLqLyJ"
@@ -627,7 +628,8 @@ const App = () => {
               Vous possédez un lieu d'exception ? Offrez à vos visiteurs une expérience enrichie grâce à des placements de produits élégants, adaptés à votre univers.
             </p>
             <button 
-              className="bg-suite-purple text-white px-12 py-5 rounded-lg font-bold font-oswald uppercase tracking-wider hover:bg-black transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-suite-purple/50 shadow-xl text-lg"
+              data-event="open_form"
+              className="popup-trigger bg-suite-purple text-white px-12 py-5 rounded-lg font-bold font-oswald uppercase tracking-wider hover:bg-black transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-suite-purple/50 shadow-xl text-lg"
               aria-label="Rejoindre le réseau LIVSPOT"
               tabIndex="0"
               data-tally-open="wLqLyJ"
