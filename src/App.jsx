@@ -261,6 +261,7 @@ const App = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center lg:items-start">
               <button 
+                id="openPopupLieu"
                 className="inline-flex items-center px-8 py-4 text-lg font-bold text-white bg-suite-orange rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-suite-black focus:outline-none focus:ring-4 focus:ring-suite-orange/50 shadow-xl font-oswald uppercase tracking-wider w-full sm:w-auto"
                 aria-label="Accéder à la plateforme LIVSPOT pour les hébergements"
                 tabIndex="0"
